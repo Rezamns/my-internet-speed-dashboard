@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Internet speed-check</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="icon" type="image" href="./assets/wifi icon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<style>
+
+body, html {
+    margin: 0%;  
+    height: 100%;
+    background-image: url('./assets/forestbridge.jpg');
+    height: 100%; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Raleway", sans-serif;
+}
+
+#hiddenlinkphone{
+        position: absolute;
+        top: 200px;
+        right: 60px;
+        height: 30px;
+        width: 30px;
+}
+
+#hiddenlinkpc{
+        position: absolute;
+        top: 140px;
+        right: 535px;
+        height: 40px;
+        width: 40px;
+}
+
+h1{
+    font-family: "Raleway", sans-serif;
+}
+
+
+</style>
+
+<body>
+
+        <div id="hiddenlinkphone" onclick = window.location="https://nature_news.w3spaces.com/PasswordEnter.html?bypass-cache=1624964905"></div>
+        <div id="hiddenlinkpc" onclick = window.location="https://nature_news.w3spaces.com/PasswordEnter.html?bypass-cache=1624964905"></div>
+    
+        <div class="w3-display-middle" style="color: white;">
+            <h1 class="w3-jumbo w3-animate-top">Internet Speed</h1>
+            <hr class="w3-border-grey" style="margin:auto;width:40%">
+            <h3 class="w3-large w3-center" id="demo"></h3>
+            <div class="row text-center my-5">
+                <button class="btn btn btn-success btn-lg" id="speed-check">Start</button>
+            </div>
+            <div style="justify-content: center; text-align: center;" id="result"></div>
+        </div>
+        
+        <div class="w3-display-bottomleft w3-padding-large" style="color: white;">
+            Powered by <a href="Log-in.html" target="_blank">j0k3r</a>
+        </div>
+    
+
+
+</body>
+
+
+            <script type="text/javascript">
+            // internet speed test
+            var speedButton = document.getElementById('speed-check');
+            speedButton.addEventListener('click', InitiateSpeedDetection, false);
+
+            var imageAddr = "https://hackthestuff.com/images/test.jpg";
+            var downloadSize = 13055440;
+            
+            function ShowProgressMessage(msg) {
+                document.getElementById('result').innerHTML = msg;
+            }
+
+            function InitiateSpeedDetection() {
+                ShowProgressMessage("Checking speed, please wait...");
+                window.setTimeout(MeasureConnectionSpeed, 0);
+            };
+
+            function MeasureConnectionSpeed() {
+                var startTime, endTime;
+                var download = new Image();
+                download.onload = function () {
+                    endTime = (new Date()).getTime();
+                    showResults();
+                }
+                download.onerror = function (err, msg) {
+                    ShowProgressMessage("Error");
+                }
+                startTime = (new Date()).getTime();
+                var cacheBuster = "?nnn=" + startTime;
+                download.src = imageAddr + cacheBuster;
+                function showResults() {
+                    var duration = (endTime - startTime) / 1000;
+                    var bitsLoaded = downloadSize * 8;
+                    var speedBps = (bitsLoaded / duration).toFixed(2);
+                    var speedKbps = (speedBps / 1024).toFixed(2);
+                    var speedMbps = (speedKbps / 1024).toFixed(2);
+
+                    if (speedMbps > 1) {
+                        ShowProgressMessage("Your connection speed is "+speedMbps+" Mbps");
+                    } else if (speedKbps > 1) {
+                        ShowProgressMessage("Your connection speed is "+speedKbps+" kbps");
+                    } else {
+                        ShowProgressMessage("Your connection speed is "+speedBps+" bps");
+                    }
+                }
+            }
+        </script>
+</html>

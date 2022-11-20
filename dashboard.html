@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html style="justify-content: center; text-align: center;">
+  <head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image" href="./assets/wifi icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      .main {
+          display: flex;
+          padding: 2em;
+
+          justify-content: center;
+          align-items: middle;
+      }
+      
+      .clockbox,
+      #clock {
+          width: 100%;
+      }
+      
+      /* Clock styles */
+      .circle {
+          fill: none;
+          stroke:#404040;
+          stroke-width: 9;
+          stroke-miterlimit: 10;
+      }
+      
+      .mid-circle {
+          fill:#404040;
+      }
+      .hour-marks {
+          fill: none;
+          stroke:#404040;
+          stroke-width: 9;
+          stroke-miterlimit: 10;
+      }
+      
+      .hour-arm {
+          fill: none;
+          stroke: #404040;
+          stroke-width: 17;
+          stroke-miterlimit: 10;
+      }
+      
+      .minute-arm {
+          fill: none;
+          stroke:#404040;
+          stroke-width: 11;
+          stroke-miterlimit: 10;
+      }
+      
+      .second-arm {
+          fill: none;
+          stroke: #404040;
+          stroke-width: 4;
+          stroke-miterlimit: 10;
+      }
+      
+      /* Transparent box ensuring arms center properly. */
+      .sizing-box {
+          fill: none;
+      }
+      
+      #dateAndTime{
+          color: red
+      }
+      
+      /* Make all arms rotate around the same center point. */
+      /* Optional: Use transition for animation. */
+      #hour,
+      #minute,
+      #second {
+          transform-origin: 300px 300px;
+          transition: transform .7s ease-in-out;
+      }
+      #clock2 h2 {
+          position: static;
+          display: block;
+          color: #404040;
+          text-align: center;
+          margin: 10px 0;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.4em;
+          font-size: 0.8em;
+      }
+      
+      #clock2 #time {
+          display: flex;
+          justify-content: center;
+      
+      }
+      
+      #clock2 #time div{
+          position: relative;
+          margin: 0 5px;
+      
+      }
+      
+      #clock2 #time div span{
+          position: relative;
+          display: block;
+          width: 50px;
+          height: 30px;
+          background: #2196f3;
+          color: #fff;
+          font-weight: 300;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1em;
+          z-index: 10;
+          box-shadow: 0 0 0 1px rgba(0,0,0, .2);
+      }
+      
+      #clock2 #time div span:nth-child(2){
+          height: 30px;
+          font-size: 0.7em;
+          letter-spacing: 0.2em;
+          font-weight: 500;
+          z-index: 9;
+          box-shadow: none;
+          background: #127fd6;
+          text-transform: unset;
+      }
+      
+      #clock2 #time div:last-child span{
+          background: #ff006a;
+      }
+      
+      #clock2 #time div:last-child span:nth-child(2){
+          background: #ec0062;
+      }
+      </style>
+
+  </head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="./main-index.html" class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right"></i>Home</a>
+  <a href="./index.html" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+    <img src="./assets/Gcity-icon.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+  </a>
+ </div>
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">profile</h4>
+         <p class="w3-center"><img src="./assets/clock.gif" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Tehran, IR</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> May 4, 2000</p>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> 0023405430</p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+          <div id="Demo1" class="w3-hide w3-container">
+            <p>Some text..</p>
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <div id="Demo2" class="w3-hide w3-container">
+            <p>Some other text..</p>
+          </div>
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+           <div class="w3-half">
+             <img src="https://www.w3schools.com/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="https://www.w3schools.com/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="https://www.w3schools.com/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="https://www.w3schools.com/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+      
+      <!-- Interests --> 
+      <div class="w3-card w3-round w3-white w3-hide-small">
+        <div class="w3-container">
+          <p>Social Media</p>
+          <p>
+            <span class="w3-tag w3-small w3-theme-d5">instagram</span>
+            <span class="w3-tag w3-small w3-theme-d4">telegram</span>
+            <span class="w3-tag w3-small w3-theme-d3">what's app</span>
+            <span class="w3-tag w3-small w3-theme-d2">line</span>
+            <span class="w3-tag w3-small w3-theme-d1">tango</span>
+            <span class="w3-tag w3-small w3-theme">skype</span>
+            <span class="w3-tag w3-small w3-theme-l1">signal</span>
+            <span class="w3-tag w3-small w3-theme-l2">twitter</span>
+            <span class="w3-tag w3-small w3-theme-l3">facebook</span>
+            <span class="w3-tag w3-small w3-theme-l4">tiktak</span>
+            <span class="w3-tag w3-small w3-theme-l5">snapchat</span>
+          </p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Gmail</strong></p>
+        <p>Username: reza.mansouri4497</p>
+        <p>Password: rezamns4497</p>
+      </div>
+
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Gmail</strong></p>
+        <p>Username: reza.mansouriiii4497</p>
+        <p>Password: reza2000</p>
+      </div>
+
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Gmail</strong></p>
+        <p>Username: prj1p1</p>
+        <p>Password: reza2000</p>
+      </div>
+
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Instagram</strong></p>
+        <p>Username: pagemns4497</p>
+        <p>Password: reza2000</p>
+      </div>
+
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Gmail</strong></p>
+        <p>Username: ahmadmns4497</p>
+        <p>Password: reza2000</p>
+      </div>
+
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Instagram</strong></p>
+        <p>Username: ahmad_mns4497</p>
+        <p>Password: reza2000</p>
+      </div>
+
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Instagram</strong></p>
+        <p>Username: Chillcastle_music</p>
+        <p>Password: none</p>
+      </div>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="./assets/Gcity-icon.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">.bat</span>
+        <h4>My Virus Collection</h4><br>
+        <hr class="w3-clear">
+        <img src="./assets/terminal.gif" style="width:100%" class="w3-margin-bottom">
+      </div> 
+
+
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <span class="w3-right w3-opacity">.bat</span>
+        <h4>Fake system scan</h4><br>
+        <hr class="w3-clear">
+        <p>
+          @echo off
+          color 02
+          :start
+          echo %random% %random% %random% %random% %random% %random% %random% %random% %random% %random%
+          goto start</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="./assets/sand.gif" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="w3-half">
+              <img src="./assets/x.gif" style="width:100%" alt="Nature" class="w3-margin-bottom">
+          </div>
+        </div>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Copy</button>
+      </div>
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <span class="w3-right w3-opacity">.bat</span>
+        <h4>shutdown my system</h4><br>
+        <hr class="w3-clear">
+        <p>-s -t 60 -c “Virus Detection. The computer is shutting down</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Copy</button>
+      </div>  
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <span class="w3-right w3-opacity">.bat</span>
+        <h4>delete drive C</h4><br>
+        <hr class="w3-clear">
+        <p>
+          @Echo off
+           Del C: *.* |y
+        </p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Copy</button>
+      </div> 
+
+
+
+      
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <h4>internet speed test</h4>
+          <img src="./assets/wifi.gif" alt="Forest" style="width:100%;">
+ 
+          <div id="result"></div>
+          <p><button class="w3-button w3-block w3-theme-l2" id="speed-check">Start</button></p>
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+
+
+          <main class="main">
+            <div class="clockbox">
+                <svg id="clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+                    <g id="face">
+                        <circle class="circle" cx="300" cy="300" r="253.9"/>
+                        <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
+                        <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
+                    </g>
+                    <g id="hour">
+                        <path class="hour-arm" d="M300.5 298V142"/>
+                        <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                    </g>
+                    <g id="minute">
+                        <path class="minute-arm" d="M300.5 298V67"/>
+                        <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                    </g>
+                    <g id="second">
+                        <path class="second-arm" d="M300.5 350V55"/>
+                        <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                    </g>
+                </svg>
+
+                <div id ="clock2">
+                  <h6>Tehran Time zone</h6>
+                  <div id = "time">
+                      <div><span id="Hours">00</span><span>H</span></div>
+                      <div><span id="Minutes">00</span><span>M</span></div>
+                      <div><span id="Seconds">00</span><span>S</span></div>
+                  </div>
+              </div>
+              
+            </div><!-- .clockbox -->
+        </main>
+
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+        <img src="./assets/calaunder.gif" style="width:100%" alt="Nature">
+      </div> 
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+        <p><img src="./assets/controller.gif" style="width:100%" alt="Nature"></p>
+      </div>
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-d3 w3-padding-16">
+    <blockquote style="color: white;" class="text-lg text-center line-height-md "><p id="demo"></p></blockquote>
+</footer>   
+
+<footer class="w3-container w3-theme-d5">
+  <p>Powered by <a href="https://www.w3schools.com/spaces" target="_blank">j0k3r</a></p>
+</footer>
+ 
+<script>
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+<script type="text/javascript">
+    // internet speed test
+    var speedButton = document.getElementById('speed-check');
+    speedButton.addEventListener('click', InitiateSpeedDetection, false);
+
+    var imageAddr = "https://hackthestuff.com/images/test.jpg";
+    var downloadSize = 13055440;
+    
+    function ShowProgressMessage(msg) {
+        document.getElementById('result').innerHTML = msg;
+    }
+
+    function InitiateSpeedDetection() {
+        ShowProgressMessage("...لطفا چند لحظه صبر کنید");
+        window.setTimeout(MeasureConnectionSpeed, 0);
+    };
+
+    function MeasureConnectionSpeed() {
+        var startTime, endTime;
+        var download = new Image();
+        download.onload = function () {
+            endTime = (new Date()).getTime();
+            showResults();
+        }
+        download.onerror = function (err, msg) {
+            ShowProgressMessage("Error");
+        }
+        startTime = (new Date()).getTime();
+        var cacheBuster = "?nnn=" + startTime;
+        download.src = imageAddr + cacheBuster;
+        function showResults() {
+            var duration = (endTime - startTime) / 1000;
+            var bitsLoaded = downloadSize * 8;
+            var speedBps = (bitsLoaded / duration).toFixed(2);
+            var speedKbps = (speedBps / 1024).toFixed(2);
+            var speedMbps = (speedKbps / 1024).toFixed(2);
+
+            if (speedMbps > 1) {
+                ShowProgressMessage("سرعت اینترنت شما برابر است با "+speedMbps+" Mbps");
+            } else if (speedKbps > 1) {
+                ShowProgressMessage("سرعت اینترنت شما برابر است با "+speedKbps+" kbps");
+            } else {
+                ShowProgressMessage("سرعت اینترنت شما برابر است با "+speedBps+" bps");
+            }
+        }
+    }
+</script>
+
+<script>
+  const HOURHAND = document.querySelector("#hour");
+const MINUTEHAND = document.querySelector("#minute");
+const SECONDHAND = document.querySelector("#second");
+const GETREALTIME = document.querySelector("#dateAndTime");
+const DATEDOTAY = document.getElementById("date")
+var HOURHAND2 = document.querySelector("#Hours");
+var MINUTEHAND2 = document.querySelector("#Minutes");
+var SECONDHAND2 = document.querySelector("#Seconds");
+var date = new Date();
+console.log(date);
+let hr = date.getHours();
+let min = date.getMinutes();
+let sec = date.getSeconds();
+console.log("Hour: " + hr + " Minute: " + min + " Second: " + sec);
+
+let hrPosition = (hr*360/12)+(min*(360/60)/12);
+let minPosition = (min*360/60)+(sec*(360/60)/60);
+let secPosition = sec*360/60;
+
+function runTheClock() {
+    var date = new Date();
+    console.log(date);
+    let hr = date.getHours();
+    let min = date.getMinutes();
+    let sec = date.getSeconds();
+    let currentHour = function () {
+        let realHour = 0;
+        let realHourInPM = 0;
+        if (hr >= 13) {
+            realHour = hr - 12;
+            realHourInPM = `${realHour}`;
+        }
+        else {
+            realHour = hr;
+            realHourInPM = `${realHour}`;
+        }
+
+        return realHourInPM;
+    }
+    hrPosition = hrPosition+(3/360);
+    minPosition = minPosition+(6/60);
+    secPosition = secPosition+6;
+
+    HOURHAND.style.transform = "rotate(" + hrPosition + "deg)";
+    MINUTEHAND.style.transform = "rotate(" + minPosition + "deg)";
+    SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
+    HOURHAND2.innerHTML = currentHour();
+    MINUTEHAND2.innerHTML = min;
+    SECONDHAND2.innerHTML = sec;
+
+}
+
+var interval = setInterval(runTheClock, 1000);
+
+
+        // count down
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+// Get today's date and time
+var now = new Date().getTime();
+  
+// Find the distance between now and the count down date
+var distance = countDownDate - now;
+  
+// Time calculations for days, hours, minutes and seconds
+var days = Math.floor(distance / (8000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+  
+  // If the count down is over, write some text 
+  if (distance < 0) {
+  clearInterval(x);
+  document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+</body>
+</html> 
