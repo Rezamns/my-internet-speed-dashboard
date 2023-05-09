@@ -296,6 +296,12 @@
            </div>
          </div>
           </div>
+
+          <button onclick="myFunction('Demo4')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i>Camera</button>
+          <div style="padding: 5px; padding-bottom: 0px;" id="Demo4" class="w3-hide">
+            <video id="videoElement" autoplay style="width:100%"></video>
+            <canvas style="display: none;" id="canvasElement"></canvas>        
+          </div>
         </div>      
       </div>
       <br>
@@ -617,6 +623,30 @@ var days = Math.floor(distance / (8000 * 60 * 60 * 24));
   document.getElementById("demo").innerHTML = "EXPIRED";
   }
 }, 1000);
+
+// Camera settings
+const videoElement = document.getElementById('videoElement');
+    const captureButton = document.getElementById('captureButton');
+    const canvasElement = document.getElementById('canvasElement');
+    const canvasContext = canvasElement.getContext('2d');
+
+    // Request access to the user's camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        videoElement.srcObject = stream;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    // Capture an image from the camera stream
+    captureButton.addEventListener('click', function() {
+      canvasElement.width = videoElement.videoWidth;
+      canvasElement.height = videoElement.videoHeight;
+      canvasContext.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+      const imageDataUrl = canvasElement.toDataURL('image/png');
+      console.log(imageDataUrl);
+    });
 </script>
 
 </body>
