@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">  
+<link rel="icon" type="image" href="./assets/wifi icon.png">
+</head>
+<body>
+<style>
+
+    body{
+        text-align: center;
+        background-color: black;
+    }
+
+    #passWord{
+        border-color: rgb(0, 212, 106);
+        font-size: 40px;
+        height: 100px;
+        width: 400px;
+        margin-top: 280px;
+        border-radius: 10px;
+        padding: 10px;
+        outline: none;
+        background-color: black;
+        color: rgb(0, 212, 106);
+        padding-left: 20px;
+        }
+
+    #searchButton{
+        font-size: 40px;
+        border-color: rgb(0, 212, 106);
+        height: 125px;
+        width: 150px;
+        border-radius: 10px;
+        color: rgb(0, 212, 106);
+        background-color: black;
+    }
+
+</style>
+
+    <input type="password" id="passWord" placeholder="Enter password">
+    <button id="searchButton" type="button" onclick="onLogin()">Click</button>
+
+    <script>
+        const user = localStorage.getItem('user');
+
+        const users = [
+            {
+                id: 1,
+                firstName: 'Reza Mns',
+                passWord: 'reza2000'
+            },
+            {
+                id: 2,
+                firstName: 'Nima Sh',
+                passWord: '09385190557'
+            },
+            {
+                id: 3,
+                firstName: 'Ghazale M',
+                passWord: '09120129390'
+            },
+            {
+                id: 4,
+                firstName: 'Maryam M',
+                passWord: '09128465961'
+            },
+            {
+                id: 5,
+                firstName: 'Nima Nosh',
+                passWord: '43726874'
+            },
+            {
+                id: 6,
+                firstName: 'Reza Mns',
+                passWord: '09120234497'
+            },
+            {
+                id: 7,
+                firstName: 'Hera S',
+                passWord: '09107655101'
+            },
+            {
+                id: 8,
+                firstName: 'j0k3r',
+                passWord: '091202344977',
+            }
+        ]
+        
+        function onLogin() {
+            const passWord = document.getElementById('passWord').value;         
+            if (passWord !== '') {
+                const user = users.find(x => x.passWord === passWord);
+            if (user) {
+                if (user.firstName === 'j0k3r') {
+                    alert('Salam' +' '+ user.firstName);
+                    window.location = './Hack Dashboard/index2.html';
+                } else{
+                    alert('Salam' +' '+ user.firstName);
+                    window.location = 'dashboard.html';
+            }
+            } else {
+                alert('password is incorrect!');
+            }
+            } else {
+                alert('password is Empty!');
+            }
+        }
+    </script>
+</body>
+</html>
