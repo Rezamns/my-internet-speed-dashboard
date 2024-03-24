@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rj Private Messager</title>
+	<link rel="stylesheet"        
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+		  crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1 style="margin-top: 15px; margin-bottom: 15px;text-align: center;color: rgb(0, 212, 106);">		
+    Rj Private Messanger
+</h1>
+
+<form class="container" id="contactForm">
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <div class="form-group">
+                <label class="title" for="exampleFormControlInput1">
+                    Who Are You?
+                </label>
+
+                <input type="text" class="inputsstyle form-control" placeholder="enter your name" id="nameField">
+            </div>
+
+            <div class="form-group">
+                <label class="title" for="exampleFormControlInput1">
+                    What is Your Message
+                </label>
+                
+
+                <input type="text" class="inputsstyle form-control" placeholder="write your message..." id="ageField">
+            </div>
+
+        </div>
+
+        <button onclick="writeData()" style="width: 100%;" class="bttn-dark bzbz btn btn--primary" type="submit">Send</button>
+
+    </div>
+</form>
+
+
+<p id="data"></p>
+
+</body>
+
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:700';
+
+    body{
+        text-align: center;
+        background-color: black;
+    }
+
+    .inputsstyle{
+        border-color: rgb(0, 212, 106);
+        font-size: 40px;
+        height: 100px;
+        width: 100%;
+        border-radius: 10px;
+        outline: none;
+        background-color: black;
+        color: rgb(0, 212, 106);
+    }
+
+    .card {
+         background-color: black;
+    }
+
+    .title {
+        color: white;
+    }
+    
+    .bzbz {
+      background: black;
+    }
+    
+    .bttn-dark {
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      color: white;
+      text-align: center;
+      width: 270px;
+      font-weight: bold;
+      padding: 14px 0px;
+      border: 3px solid rgb(0, 212, 106);
+      border-radius: 2px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
+    .bttn-dark:before {
+      -webkit-transition: 0.5s all ease;
+      transition: 0.5s all ease;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 50%;
+      color: black;
+      bottom: 0;
+      opacity: 0;
+      content: "";
+      background-color: rgb(0, 212, 106);
+      z-index: -1;
+    }
+    .bttn-dark:hover:before {
+      -webkit-transition: 0.5s all ease;
+      transition: 0.5s all ease;
+      left: 0;
+      right: 0;
+      opacity: 1;
+    }
+    .bttn-dark:focus:before {
+      -webkit-transition: 0.5s all ease;
+      transition: 0.5s all ease;
+      left: 0;
+      right: 0;
+      opacity: 1;
+    } 
+</style>
+
+<script>
+            let firebaseConfig = {
+                apiKey: "AIzaSyAKWd8Uc7JyyXkL6ZdOUjeY3mux0Ga94qc",
+                authDomain: "rj-data-center.firebaseapp.com",
+                databaseURL: "https://rj-data-center-default-rtdb.firebaseio.com",
+                projectId: "rj-data-center",
+                storageBucket: "rj-data-center.appspot.com",
+                messagingSenderId: "418814155597",
+                appId: "1:418814155597:web:d156b8d44499bcaca1b504"
+            };
+      firebase.initializeApp(firebaseConfig);
+        
+        function writeData() {
+            firebase.database().ref("User").set({
+                name: document.getElementById("nameField").value,
+                age: document.getElementById("ageField").value
+            });
+            alert("your message have been send successfully");
+        }
+    
+        function getData() {
+            firebase.database().ref('/').once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot)
+                {
+                    var childKey = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    document.getElementById("data").innerHTML = childData['name'] + "," + childData['age'];
+                })
+            })
+        }
+    
+        getData();
+    
+</script>
+</html>
