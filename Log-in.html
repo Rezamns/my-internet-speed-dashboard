@@ -84,7 +84,18 @@
                 id: 8,
                 firstName: 'j0k3r',
                 passWord: '091202344977',
-            }
+            },
+            {
+                id: 9,
+                firstName: 'Rj Messanger S',
+                passWord: 'smessage',
+            },
+            {
+                id: 10,
+                firstName: 'Rj Messanger R',
+                passWord: 'rmessage',
+            },
+            
         ]
         
         function onLogin() {
@@ -95,17 +106,23 @@
                 if (user.firstName === 'j0k3r') {
                     alert('Salam' +' '+ user.firstName);
                     window.location = './Hack Dashboard/index2.html';
-                } else{
+                } else if(user.firstName === 'Rj Messanger S') {
+                    alert('Welcome to Rj Messanger');
+                    window.location = 'send.html';
+                } else if(user.firstName === 'Rj Messanger R') {
+                    alert('Welcome to Rj Messanger');
+                    window.location = 'receve.html';
+                }else {
                     alert('Salam' +' '+ user.firstName);
                     window.location = 'dashboard.html';
-            }
-            } else {
-                alert('password is incorrect!');
-            }
-            } else {
-                alert('password is Empty!');
-            }
-        }
+                }
+                } else {
+                    alert('password is incorrect!');
+                }
+                } else {
+                    alert('password is Empty!');
+                }
+                }
     </script>
 </body>
 </html>
